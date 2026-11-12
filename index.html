@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김도현의 리치리치 프로필</title>
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .title-font {
+            font-family: 'Black Han Sans', sans-serif;
+        }
+
+        /* 텍스트 튀는 애니메이션 */
+        .bounce-char {
+            display: inline-block;
+            animation: bounceText 0.8s infinite alternate ease-in-out;
+            background: linear-gradient(180deg, #ffe066 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.4));
+        }
+
+        @keyframes bounceText {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                transform: translateY(-18px) scale(1.15) rotate(2deg);
+            }
+        }
+
+        /* 골드 그라데이션 테두리 및 효과 */
+        .gold-border {
+            border: 2px solid #f59e0b;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+        }
+
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+        }
+
+        /* 3D 카드를 위한 CSS */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-inner.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* 머니 파티클 배경 CSS */
+        .money-particle {
+            position: fixed;
+            top: -50px;
+            font-size: 24px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 50;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body class="pb-16">
+
+    <!-- 머니 비 배경용 컨테이너 -->
+    <div id="money-rain-container"></div>
+
+    <!-- 헤더 섹션 -->
+    <header class="text-center py-12 px-4 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-block bg-yellow-500/20 px-4 py-1 rounded-full border border-yellow-400 text-yellow-300 mb-4 text-sm font-semibold tracking-wider">
+                💰 VIP GOLD PROFILE 💰
+            </div>
+            
+            <!-- 튀는 글자 별명 -->
+            <h1 class="title-font text-5xl md:text-7xl font-extrabold mb-4 tracking-wider">
+                <span class="bounce-char" style="animation-delay: 0.0s;">김</span>
+                <span class="bounce-char" style="animation-delay: 0.1s;">도</span>
+                <span class="bounce-char" style="animation-delay: 0.2s;">현</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-yellow-100 font-bold mt-2">
+                "세상의 모든 영앤리치를 꿈꾸는 럭셔리 대마왕"
+            </p>
+            <div class="mt-4 text-gray-300 text-sm max-w-md mx-auto">
+                통장이 빵빵해지는 그날까지! 저에 대해 알아볼 준비가 되셨나요?
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-12">
+
+        <!-- 좋아하는 것 3가지 (플립 카드) -->
+        <section>
+            <h2 class="title-font text-2xl md:text-3xl text-yellow-400 mb-6 flex items-center gap-2 border-b border-yellow-500/30 pb-2">
+                <i class="fa-solid fa-gem text-yellow-300"></i> 김도현이 애지중지하는 3가지 (클릭해보세요!)
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 카드 1: 돈 -->
+                <div class="h-64 perspective-1000 cursor-pointer" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <!-- 앞면 -->
+                        <div class="flip-card-front bg-gray-800/90 gold-border p-6 flex flex-col items-center justify-center text-center shadow-xl">
+                            <div class="w-20 h-20 bg-yellow-500/20 rounded-full flex items-center justify-center mb-4 border border-yellow-400/50">
+                                <i class="fa-solid fa-sack-dollar text-4xl text-yellow-400"></i>
+                            </div>
+                            <h3 class="title-font text-2xl text-yellow-300">1. 돈 (Money)</h3>
+                            <p class="text-xs text-gray-400 mt-2">눌러서 이유 보기 👆</p>
+                        </div>
+                        <!-- 뒷면 -->
+                        <div class="flip-card-back bg-gradient-to-br from-yellow-600 to-amber-800 p-6 flex flex-col items-center justify-center text-center shadow-xl border-2 border-yellow-300">
+                            <i class="fa-solid fa-coins text-3xl text-yellow-200 mb-2"></i>
+                            <h4 class="title-font text-xl text-white mb-2">좋아하는 이유</h4>
+                            <p class="text-sm text-yellow-100 leading-relaxed">
+                                말해 뭐합니까? 💸 세종대왕님과 신사임당님의 인자한 미소는 보기만 해도 행복해집니다! 0이 많이 붙을수록 좋아해요.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 카드 2: 축구 -->
+                <div class="h-64 perspective-1000 cursor-pointer" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <!-- 앞면 -->
+                        <div class="flip-card-front bg-gray-800/90 gold-border p-6 flex flex-col items-center justify-center text-center shadow-xl">
+                            <div class="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mb-4 border border-emerald-400/50">
+                                <i class="fa-solid fa-futbol text-4xl text-emerald-400"></i>
+                            </div>
+                            <h3 class="title-font text-2xl text-emerald-300">2. 축구 (Soccer)</h3>
+                            <p class="text-xs text-gray-400 mt-2">눌러서 이유 보기 👆</p>
+                        </div>
+                        <!-- 뒷면 -->
+                        <div class="flip-card-back bg-gradient-to-br from-emerald-700 to-green-900 p-6 flex flex-col items-center justify-center text-center shadow-xl border-2 border-emerald-300">
+                            <i class="fa-solid fa-trophy text-3xl text-yellow-300 mb-2"></i>
+                            <h4 class="title-font text-xl text-white mb-2">좋아하는 이유</h4>
+                            <p class="text-sm text-emerald-100 leading-relaxed">
+                                초록 잔디 위를 뛰어다닐 때의 그 야생적인 쾌감! ⚽️ 비록 공은 마음대로 안 굴러가지만, 마음만은 챔피언스리그 우승 주역입니다!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 카드 3: 도란 -->
+                <div class="h-64 perspective-1000 cursor-pointer" onclick="flipCard(this)">
+                    <div class="flip-card-inner">
+                        <!-- 앞면 -->
+                        <div class="flip-card-front bg-gray-800/90 gold-border p-6 flex flex-col items-center justify-center text-center shadow-xl">
+                            <div class="w-20 h-20 bg-purple-500/20 rounded-full flex items-center justify-center mb-4 border border-purple-400/50">
+                                <i class="fa-solid fa-shield-halved text-4xl text-purple-400"></i>
+                            </div>
+                            <h3 class="title-font text-2xl text-purple-300">3. 도란 (Doran)</h3>
+                            <p class="text-xs text-gray-400 mt-2">눌러서 이유 보기 👆</p>
+                        </div>
+                        <!-- 뒷면 -->
+                        <div class="flip-card-back bg-gradient-to-br from-purple-700 to-indigo-900 p-6 flex flex-col items-center justify-center text-center shadow-xl border-2 border-purple-300">
+                            <i class="fa-solid fa-wand-magic-sparkles text-3xl text-pink-300 mb-2"></i>
+                            <h4 class="title-font text-xl text-white mb-2">좋아하는 이유</h4>
+                            <p class="text-sm text-purple-100 leading-relaxed">
+                                도란의 검? 도란의 방패? 도란 선수? ⚔️ 무언가 검증된 단단함과 가성비, 그리고 이름부터 입에 착착 감기는 낭만이 있기 때문이죠!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OX 퀴즈 섹션 -->
+        <section class="bg-gray-800/80 rounded-2xl p-6 md:p-8 gold-border shadow-2xl relative">
+            <h2 class="title-font text-2xl md:text-3xl text-yellow-400 mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-circle-question"></i> 김도현 팩트 체크 OX 퀴즈
+            </h2>
+            <div class="bg-gray-900/60 p-6 rounded-xl text-center border border-gray-700 mb-6">
+                <p class="text-lg md:text-xl font-bold text-gray-100">
+                    Q. "나 김도현은 축구를 잘한다."
+                </p>
+            </div>
+
+            <!-- O/X 선택 버튼 -->
+            <div class="grid grid-cols-2 gap-4 max-w-xs mx-auto">
+                <button onclick="checkQuiz('O')" class="py-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-500 hover:to-blue-700 text-white font-black text-3xl rounded-xl shadow-lg transition duration-200 active:scale-95 border-2 border-blue-400">
+                    O
+                </button>
+                <button onclick="checkQuiz('X')" class="py-4 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 text-white font-black text-3xl rounded-xl shadow-lg transition duration-200 active:scale-95 border-2 border-red-400">
+                    X
+                </button>
+            </div>
+
+            <!-- 퀴즈 결과 메시지 창 -->
+            <div id="quiz-result" class="hidden mt-6 p-4 rounded-xl text-center font-bold text-lg"></div>
+        </section>
+
+        <!-- 아무것도 없음 랜더머 (황금 상자) -->
+        <section class="bg-gradient-to-b from-yellow-900/40 to-gray-800/80 rounded-2xl p-6 md:p-8 gold-border shadow-2xl text-center">
+            <h2 class="title-font text-2xl md:text-3xl text-yellow-400 mb-2 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-vault"></i> 김도현의 비밀 시크릿 보물상자
+            </h2>
+            <p class="text-gray-300 text-sm mb-6">버튼을 누르면 어마어마한 보물이 나올지도 몰라요!</p>
+
+            <button onclick="drawNothing()" class="px-8 py-4 gold-gradient-bg text-gray-900 font-extrabold text-xl rounded-full shadow-lg hover:brightness-110 active:scale-95 transition-all border-2 border-yellow-100 cursor-pointer">
+                🎁 보물 상자 열기 🎁
+            </button>
+
+            <!-- 랜덤 결과 출력 부분 -->
+            <div class="mt-6 min-h-[80px] flex items-center justify-center">
+                <div id="nothing-result" class="text-xl md:text-2xl font-extrabold text-yellow-300 bg-black/40 px-6 py-4 rounded-xl border border-yellow-500/30 w-full max-w-md hidden">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="mt-16 text-center text-xs text-yellow-500/60 py-6">
+        <p>© 2026 KIM DO HYUN. All Rich Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript 로직 -->
+    <script>
+        // 1. 카드 뒤집기 함수
+        function flipCard(cardElement) {
+            const inner = cardElement.querySelector('.flip-card-inner');
+            inner.classList.toggle('is-flipped');
+        }
+
+        // 2. OX 퀴즈 로직 (정답: X)
+        function checkQuiz(userAnswer) {
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.classList.remove('hidden', 'bg-green-600/30', 'border-green-500', 'text-green-300', 'bg-red-600/30', 'border-red-500', 'text-red-300');
+
+            if (userAnswer === 'X') {
+                // 정답! (축하 효과)
+                resultDiv.classList.add('bg-green-600/30', 'border', 'border-green-500', 'text-green-300');
+                resultDiv.innerHTML = `
+                    🎉 <span class="title-font text-xl">정답입니다! (X)</span> 🎉<br>
+                    <span class="text-sm font-normal text-gray-200">축구를 '좋아'하지만 잘한다고는 안 했습니다! 훌륭한 양심적 판단이에요! ⚽️✨</span>
+                `;
+                triggerMoneyRain(); // 돈비 내리기 효과
+            } else {
+                // 오답 (아쉬운 효과)
+                resultDiv.classList.add('bg-red-600/30', 'border', 'border-red-500', 'text-red-300');
+                resultDiv.innerHTML = `
+                    🚨 <span class="title-font text-xl">땡! 틀렸습니다! (O는 과장광고)</span> 🚨<br>
+                    <span class="text-sm font-normal text-gray-200">저를 너무 높게 평가해주셨군요... 현실은 헛발질 마스터입니다! 😂</span>
+                `;
+            }
+        }
+
+        // 3. 돈비 내리기 애니메이션 (정답 맞췄을 때 뿜뿜)
+        function triggerMoneyRain() {
+            const container = document.getElementById('money-rain-container');
+            const moneyIcons = ['💵', '💶', '💷', '💰', '🪙', '💎'];
+
+            for (let i = 0; i < 35; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.classList.add('money-particle');
+                    particle.innerText = moneyIcons[Math.floor(Math.random() * moneyIcons.length)];
+                    particle.style.left = Math.random() * 100 + 'vw';
+                    particle.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+                    particle.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                    
+                    container.appendChild(particle);
+
+                    // 애니메이션 완료 후 제거
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 3500);
+                }, i * 80);
+            }
+        }
+
+        // 4. "아무것도 없음" 랜덤 리스트 (10개 이상)
+        const nothingList = [
+            "✨ 진짜 아무것도 없음 ✨",
+            "💸 [텅] - 통장 잔고만큼 아무것도 없음",
+            "🚫 기대하지 마세요, 아무것도 없음!",
+            "🎁 상자를 열었더니... '아무것도 없음' 획득!",
+            "💨 바람 부는 소리만 느껴짐 (아무것도 없음)",
+            "❌ 아무것도 없음 (진짜 100% 리얼)",
+            "👻 방금 지나간 건 환상입니다. 결론: 아무것도 없음",
+            "📉 주식 떡락했을 때 느낌: 아무것도 없음",
+            "🧐 돋보기로 찾아봐도... 아무것도 없음!",
+            "🔒 404 Not Found: 아무것도 없음",
+            "🕳️ 아쉽게도 꽝! 아무것도 없음!",
+            "🔮 수정구슬을 보아하니... 아무것도 없음이 보입니다."
+        ];
+
+        function drawNothing() {
+            const resultDiv = document.getElementById('nothing-result');
+            
+            // 살짝 튀는 효과를 위해 클래스 토글
+            resultDiv.classList.remove('hidden');
+            resultDiv.style.animation = 'none';
+            resultDiv.offsetHeight; // reflow
+            resultDiv.style.animation = 'bounceText 0.4s 1 ease-out';
+
+            // 랜덤 추출
+            const randomIndex = Math.floor(Math.random() * nothingList.length);
+            resultDiv.innerText = nothingList[randomIndex];
+        }
+    </script>
+</body>
+</html>
